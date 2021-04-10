@@ -1,0 +1,11 @@
+Location,C1,C1D,C2,C2D,C3,C3D,C4,C4D
+Los Angeles,Las Vegas,370,Phoenix,580,-,-,-,-
+Las Vegas,Los Angeles,370,Phoenix,420,Salt Lake City,580,-,-
+Phoenix,Los Angeles,580,Las Vegas,420,Dallas,1500,-,-
+Salt Lake City,Las Vegas,580,Denver,600,-,-,-,-
+Denver,Salt Lake City,600,St Louis,900,Minneapolis,1120,-,-
+Dallas,Phoenix,1500,St Louis,740,Indianapolis,1230,-,-
+St Louis,Denver,900,Dallas,740,Minneapolis,680,Chicago,670
+Minneapolis,St Louis,680,Denver,1120,Chicago,580,-,-
+Chicago,Minneapolis,580,St Louis,670,Indianapolis,250,-,-
+Indianapolis,Chicago,250,Dallas,1230,-,-,-,-
