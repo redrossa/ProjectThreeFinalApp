@@ -65,4 +65,32 @@ public class Backend {
 	     }
 	  }
 	
+	/**
+	 * Returns List of Names (Strings) of Locations that make up the shortest path 
+	 * from a src location to a target destination (using Dijkstra's Algorithm
+	 * in graph implementation). 
+	 * @param src
+	 * @param destination
+	 */
+	@Override
+	public List<String> shortestPath(LocationInterface src, LocationInterface destination) {
+		List<LocationInterface> sp = this.cities.shortestPath(src, destination);
+		List<String> spNames = new ArrayList<String>(); 
+		sp.forEach((p) -> spNames.add(p.getName())); 
+		return spNames;
+	}
+	
+	/**
+	 * Returns distance of shortest Path
+	 * (using Dijkstra's Algorithm
+	 * in graph implementation). 
+	 * @param src
+	 * @param destination
+	 */
+	@Override
+	public int shortestDistance(LocationInterface src, LocationInterface destination) {
+		return this.cities.getPathCost(src, destination);
+	}
+	
+	
 }
