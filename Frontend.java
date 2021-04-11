@@ -26,10 +26,9 @@ public class Frontend {
     // title screen for user:
     System.out.println("************************************");
     System.out.println("*                                  *");
-    System.out.println("*    Welcome to A Simple GPS!!!    *");
+    System.out.println("*       Starting your GPS...       *");
     System.out.println("*                                  *");
     System.out.println("************************************");
-    System.out.println("");
     System.out.println("Press enter to continue: ");
     // try to proceed to next screen
     try {
