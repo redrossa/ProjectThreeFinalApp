@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
-public class Backend {
+public class Backend implements BackendInterface {
 	
 	// Graph:
 	private CS400Graph<LocationInterface> cities; 
