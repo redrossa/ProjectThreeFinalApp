@@ -71,6 +71,7 @@ public class Backend implements BackendInterface {
 	 * in graph implementation). 
 	 * @param src
 	 * @param destination
+	 * @return List of Strings representing all locations along a Path
 	 */
 	@Override
 	public List<String> shortestPath(LocationInterface src, LocationInterface destination) {
@@ -78,6 +79,16 @@ public class Backend implements BackendInterface {
 		List<String> spNames = new ArrayList<String>(); 
 		sp.forEach((p) -> spNames.add(p.getName())); 
 		return spNames;
+	}
+	
+	/**
+	* @return A List of Strings representing all known locations within the graph/data set
+	*/
+	@Override
+	public List<String> returnAllLocation(){
+		List<String> allNames = new ArrayList<String>(); 
+		allCities.forEach((l) -> allNames.add(l.getName())); 
+		return allNames; 
 	}
 	
 	/**
