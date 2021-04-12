@@ -17,7 +17,7 @@ public class Backend implements BackendInterface {
 	private CS400Graph<LocationInterface> cities; 
 	private List<LocationInterface> allCities; 
 	
-	/**
+	  /**
 	   * Initializes a Backend given the command line arguments.
 	   * 
 	   * @param args the command line arguments whose zeroth element is expected to be
@@ -48,7 +48,7 @@ public class Backend implements BackendInterface {
 	    this.cities = new CS400Graph<LocationInterface>();
 	    
 	    // fill in graph with given Location Objects (src and target)
-	    for(LocationInterface x : allCities ) {
+	    for(LocationInterface x : allCities) {
 	    	cities.insertVertex(x); 
 	    	List<Integer> edgeWeights = x.getDistances();
 	    	List<String> xNeighbors = x.getNeighbors(); 
