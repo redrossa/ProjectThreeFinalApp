@@ -8,9 +8,9 @@
 import java.util.List;
 public interface BackendInterface {
 	
-	 public List<String> shortestPath(LocationInterface src, LocationInterface destination);
+	 public List<String> shortestPath(String src, String destination);
 	 public List<String> returnAllLocation(); 
-	 public int shortestDistance(LocationInterface src, LocationInterface destination);
+	 public int shortestDistance(String src, String destination);
 
 }
 

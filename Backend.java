@@ -8,6 +8,7 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Backend implements BackendInterface {
@@ -64,6 +65,23 @@ public class Backend implements BackendInterface {
 	    	}	
 	     }
 	  }
+	  
+	/**
+	 * Frontend can only pass strings. These strings will be location names. 
+	 * These strings will be matched to the proper location object, which 
+	 * will be returned
+	 * @param location: string user input
+	 * @return location that matches string input
+	 */
+	private LocationInterface retrieveLocation(String location) {
+		// loop through allCities (list of location objs) and return correct location object
+		for(LocationInterface x: allCities) {
+			if(x.getName().equals(location)) {
+				return x;
+			}
+		}
+		return null;
+	}
 	
 	/**
 	 * Returns List of Names (Strings) of Locations that make up the shortest path 
@@ -74,9 +92,14 @@ public class Backend implements BackendInterface {
 	 * @return List of Strings representing all locations along a Path
 	 */
 	@Override
-	public List<String> shortestPath(LocationInterface src, LocationInterface destination) {
-		List<LocationInterface> sp = this.cities.shortestPath(src, destination);
+	public List<String> shortestPath(String src, String destination) {
+		// retrieve location objects:
+		LocationInterface srcLoc = this.retrieveLocation(src);
+		LocationInterface destLoc = this.retrieveLocation(destination);
+		// determine shortest path:
+		List<LocationInterface> sp = this.cities.shortestPath(srcLoc, destLoc);
 		List<String> spNames = new ArrayList<String>(); 
+		// add String Names to List
 		sp.forEach((p) -> spNames.add(p.getName())); 
 		return spNames;
 	}
@@ -99,8 +122,10 @@ public class Backend implements BackendInterface {
 	 * @param destination
 	 */
 	@Override
-	public int shortestDistance(LocationInterface src, LocationInterface destination) {
-		return this.cities.getPathCost(src, destination);
+	public int shortestDistance(String src, String destination) {
+		LocationInterface srcLoc = this.retrieveLocation(src);
+		LocationInterface destLoc = this.retrieveLocation(destination); 
+		return this.cities.getPathCost(srcLoc, destLoc);
 	}
 	
 	
