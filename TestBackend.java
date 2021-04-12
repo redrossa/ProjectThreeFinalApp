@@ -12,4 +12,8 @@ import org.junit.jupiter.api.Assertions;
 
 public class TestBackend {
 
+	@BeforeEach
+	public void setUp() {
+		Backend back = new Backend()
+	}
 }
