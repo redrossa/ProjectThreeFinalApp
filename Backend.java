@@ -47,9 +47,13 @@ public class Backend implements BackendInterface {
 	      // init graph data structure to store locations
 	    this.cities = new CS400Graph<LocationInterface>();
 	    
-	    // fill in graph with given Location Objects (src and target)
+	    // add all locations to graph
 	    for(LocationInterface x : allCities) {
 	    	cities.insertVertex(x); 
+	    }
+	    
+	    // fill in graph with edges from csv data
+	    for(LocationInterface x : allCities) {
 	    	List<Integer> edgeWeights = x.getDistances();
 	    	List<String> xNeighbors = x.getNeighbors(); 
 	    	
@@ -126,6 +130,17 @@ public class Backend implements BackendInterface {
 		LocationInterface srcLoc = this.retrieveLocation(src);
 		LocationInterface destLoc = this.retrieveLocation(destination); 
 		return this.cities.getPathCost(srcLoc, destLoc);
+	}
+	
+	/**
+	 * Method for Tester class. 
+	 * Has no real use for the frontend. It is here for me to use in the
+	 * tester class to check that all locations have been added with their proper
+	 * weighted edges. 
+	 * @return
+	 */
+	public List<LocationInterface> retrieveLocObjs(){
+		return this.allCities; 
 	}
 	
 	
