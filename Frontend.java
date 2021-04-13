@@ -135,8 +135,8 @@ public class Frontend {
         System.out.println("The shortest path to take is: ");
         for (int i = 0; i < shortestPathToCities.size(); i++) {
           System.out.println(shortestPathToCities.get(i));
-          System.out.println("------------------------------------");
         }
+        System.out.println("------------------------------------");
       } catch (Exception e) {
         System.out.println("Unable to get shortest based on provided input.");
       }
