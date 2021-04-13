@@ -130,12 +130,17 @@ public class Frontend {
       }
       // print out shortest path
       System.out.println("------------------------------------");
-      List<String> shortestPathToCities = backend.shortestPath(startCity, endCity);
-      System.out.println("The shortest path to take is: ");
-      for (int i = 0; i < shortestPathToCities.size(); i++) {
-        System.out.println(shortestPathToCities.get(i));
+      try {
+        List<String> shortestPathToCities = backend.shortestPath(startCity, endCity);
+        System.out.println("The shortest path to take is: ");
+        for (int i = 0; i < shortestPathToCities.size(); i++) {
+          System.out.println(shortestPathToCities.get(i));
+          System.out.println("------------------------------------");
+        }
+      } catch (Exception e) {
+        System.out.println("Unable to get shortest based on provided input.");
       }
-      System.out.println("------------------------------------");
+
     }
 
   }
