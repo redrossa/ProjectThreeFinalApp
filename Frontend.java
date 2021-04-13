@@ -64,23 +64,28 @@ public class Frontend {
     }
     // quit program
     if (mode == 0) {
+      System.out.println("Thank you for using this GPS!");
       System.exit(0);
     }
     // shortest distance
     if (mode == 1) {
+      System.out.println("------------------------------------");
       getShortestPathBetweenTwoCities(back);
     }
     // list of cities
     else if (mode == 2) {
+      System.out.println("------------------------------------");
       listAllCitiesAgain(back);
     }
     // city and neighbors
     else if (mode == 3) {
-      // TODO: finish
+      System.out.println("------------------------------------");
+      listNeighbors(back);
     } else {
       System.out.println("Invalid input, please enter an integer 0-3.");
       gpsMainMenu(back);
     }
+
   }
 
   /**
@@ -91,7 +96,7 @@ public class Frontend {
   public static void getShortestPathBetweenTwoCities(Backend backend) {
     startCity = "";
     endCity = "";
-    Scanner input = new Scanner(System.in);
+    Scanner userInput = new Scanner(System.in);
     while (true) {
       System.out.println("Find the Shortest Distance Between Two Cities:");
       System.out.println("------------------------------------");
@@ -104,7 +109,8 @@ public class Frontend {
       System.out.println("Please enter the name of the city you want to start at.");
       System.out.println("If you wish to return to the main menu, please enter 0");
       try {
-        startCity = input.nextLine();
+        startCity = userInput.nextLine();
+        startCity = startCity.trim();
       } catch (Exception e) {
         System.out.println("Please enter a valid city. Try again.");
         getShortestPathBetweenTwoCities(backend);
@@ -115,7 +121,8 @@ public class Frontend {
       }
       System.out.println("Please enter the city you want to end at.");
       try {
-        endCity = input.nextLine();
+        endCity = userInput.nextLine();
+        endCity = endCity.trim();
       } catch (Exception e) {
         System.out.println("Please enter a valid city. Try again.");
         getShortestPathBetweenTwoCities(backend);
@@ -139,7 +146,8 @@ public class Frontend {
   public static void listAllCitiesAgain(Backend backend) {
     Scanner userInput = new Scanner(System.in);
     int toReturn = 1;
-    System.out.println("Cities to Choose from: ");
+    System.out.println("List of Cities to Choose from: ");
+    System.out.println("------------------------------------");
     List<String> cities = backend.returnAllLocation();
     for (int i = 0; i < cities.size(); i++) {
       System.out.println(cities.get(i));
@@ -156,4 +164,43 @@ public class Frontend {
     System.out.println("------------------------------------");
   }
 
+  public static void listNeighbors(Backend backend) {
+    Scanner userInput = new Scanner(System.in);
+    String cityToGetNeighborsOf = "";
+    int toReturn = 1;
+    System.out.println("Find the Neighbors of Your City");
+    System.out.println("------------------------------------");
+    System.out.println("Cities to Choose from: ");
+    List<String> cities = backend.returnAllLocation();
+    for (int i = 0; i < cities.size(); i++) {
+      System.out.println(cities.get(i));
+    }
+    System.out.println("Enter the name of the city you want to see the neighbors of.");
+    try {
+      cityToGetNeighborsOf = userInput.nextLine();
+      cityToGetNeighborsOf = cityToGetNeighborsOf.trim();
+    } catch (Exception e) {
+      System.out.println("Please enter a valid city. Try again.");
+      listNeighbors(backend);
+    }
+    System.out.println("------------------------------------");
+    LocationInterface city = backend.retrieveLocation(cityToGetNeighborsOf);
+    List<String> neighbors = city.getNeighbors();
+    List<Integer> distances = city.getDistances();
+    System.out.println("The list of neighboring cities and their distances for " + cityToGetNeighborsOf + ":");
+    System.out.println("------------------------------------");
+    for (int i = 0; i < neighbors.size(); i++) {
+      System.out.println(neighbors.get(i) + " is " + distances.get(i) + " miles from " + cityToGetNeighborsOf);
+    }
+    System.out.println("If you wish to return to the main menu, please enter 0");
+    try {
+      toReturn = userInput.nextInt();
+    } catch (InputMismatchException e) {
+      System.out.println("Invalid input, please enter 0 to return to the main menu");
+    }
+    if (toReturn == 0) {
+      gpsMainMenu(backend);
+    }
+    System.out.println("------------------------------------");
+  }
 }

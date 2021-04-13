@@ -77,7 +77,7 @@ public class Backend implements BackendInterface {
 	 * @param location: string user input
 	 * @return location that matches string input
 	 */
-	private LocationInterface retrieveLocation(String location) {
+	public LocationInterface retrieveLocation(String location) {
 		// loop through allCities (list of location objs) and return correct location object
 		for(LocationInterface x: allCities) {
 			if(x.getName().equals(location)) {
