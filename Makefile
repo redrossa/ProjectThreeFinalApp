@@ -1,19 +1,24 @@
-run:
-	@echo "FIXME: *make run* or just *make* should be the default target which compiles (when needed) and executes your code."
+CP := -cp junit5.jar:opencsv-5.3.jar:commons-text-1.9.jar:commons-logging-1.2.jar:commons-lang3-3.11.jar:comomons-collections-3.2.2.jar:commons-collections4-4.4.jar:commons-beanutils-1.9.4.jar:.
 
-compile:
-	@echo "FIXME: *make compile* should compile the code for your project"
+run: compile
+	java $(CP) Main maplocations.csv
+
+compile: Location.java LocationDataReader.java GraphADT.java CS400Graph.java Backend.java Frontend.java Main.java
+	javac $(CP) Location.java LocationDataReader.java GraphADT.java CS400Graph.java Backend.java Frontend.java Main.java
 
 test: testData testBackend testFrontend
 
-testFrontend:
-	@echo "FIXME: *make testFrontend* should compile (when needed) and run all your team's tests for this application"
+testFrontend: TestFrontend.java
+	javac $(CP) TestFrontend.java
+	java -jar junit5.jar $(CP) --scan-classpath
 
-testBackend:
-	@echo "FIXME: *make testFrontend* should compile (when needed) and run all your team's tests for this application"
+testBackend: TestBackend.java
+	javac $(CP) TestBackend.java
+	java -jar junit5.jar $(CP) --scan-classpath
 
-testData:
-	@echo "FIXME: *make testFrontend* should compile (when needed) and run all your team's tests for this application"
+testData: DataWranglerTests.java
+	javac $(CP) DataWranglerTests.java
+	java -jar junit5.jar $(CP) --scan-classpath
 
 clean:
 	$(RM) *.class
