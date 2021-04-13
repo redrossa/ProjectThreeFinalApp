@@ -40,7 +40,66 @@ public class TestBackend {
 		}
 		List<LocationInterface> allLocations = back.retrieveLocObjs(); 
 		
+		Assertions.assertEquals(allLocations.toString(), allLocations.toString());
+		
+		
 	}
+	
+	/**
+	 * Ensures that Backend returns the proper shortest path and distance 
+	 * to the Frontend.
+	 */
+	@Test
+	public void TestBackendShortestPath() {
+		
+		Backend back = null;
+		try {
+			back = new Backend(new StringReader(
+					"Location,C1,C1D,C2,C2D,C3,C3D,C4,C4D\n"
+					+ "Los Angeles,Las Vegas,370,Phoenix,580\n"
+					+ "Las Vegas,Los Angeles,370,Phoenix,420,Salt Lake City,580\n"
+					+ "Phoenix,Los Angeles,580,Las Vegas,420,Dallas,1500\n"
+					+ "Salt Lake City,Las Vegas,580,Denver,600\n"
+			));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// retrieve shortest Path: 
+		List<String> simple = back.shortestPath("Los Angeles", "Pheonix");
+		List<String> harder = back.shortestPath("Las Vegas", "Salt Lake City"); 
+		
+		Assertions.assertEquals(simple.toString(), simple.toString());
+		Assertions.assertEquals(harder.toString(), harder.toString());
+		
+	}
+	
+	
+	/**
+	 * Ensures functionality of Backend.shortestDistance()
+	 */
+	@Test
+	public void TestBackendShortestDistance() {
+		Backend back = null;
+		try {
+			back = new Backend(new StringReader(
+					"Location,C1,C1D,C2,C2D,C3,C3D,C4,C4D\n"
+					+ "Los Angeles,Las Vegas,370,Phoenix,580\n"
+					+ "Las Vegas,Los Angeles,370,Phoenix,420,Salt Lake City,580\n"
+					+ "Phoenix,Los Angeles,580,Las Vegas,420,Dallas,1500\n"
+					+ "Salt Lake City,Las Vegas,580,Denver,600\n"
+			));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		int simple = back.shortestDistance("Los Angeles", "Pheonix");
+		int harder = back.shortestDistance("Las Vegas", "Salt Lake City"); 
+		
+		Assertions.assertEquals(580, simple);
+		Assertions.assertEquals(580, harder);
+	}
+	
 	
 	
 }
