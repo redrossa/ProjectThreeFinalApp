@@ -6,7 +6,9 @@ run: compile
 compile: Location.java LocationDataReader.java GraphADT.java CS400Graph.java Backend.java Frontend.java Main.java
 	javac -cp $(CP) Location.java LocationDataReader.java GraphADT.java CS400Graph.java Backend.java Frontend.java Main.java
 
-test: testData testBackend testFrontend
+test: DataWranglerTests.java TestBackend.java TestFrontend.java
+	javac -cp $(CP) DataWranglerTests.java TestBackend.java TestFrontend.java
+	java -jar junit5.jar -cp $(CP) --scan-classpath
 
 testFrontend: TestFrontend.java
 	javac -cp $(CP) TestFrontend.java
