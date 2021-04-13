@@ -101,6 +101,7 @@ public class Frontend {
       System.out.println("Find the Shortest Distance Between Two Cities:");
       System.out.println("------------------------------------");
       System.out.println("Cities to Choose from: ");
+      // print out list of cities
       List<String> cities = backend.returnAllLocation();
       for (int i = 0; i < cities.size(); i++) {
         System.out.println(cities.get(i));
@@ -127,6 +128,7 @@ public class Frontend {
         System.out.println("Please enter a valid city. Try again.");
         getShortestPathBetweenTwoCities(backend);
       }
+      // print out shortest path
       System.out.println("------------------------------------");
       List<String> shortestPathToCities = backend.shortestPath(startCity, endCity);
       System.out.println("The shortest path to take is: ");
@@ -148,6 +150,7 @@ public class Frontend {
     int toReturn = 1;
     System.out.println("List of Cities to Choose from: ");
     System.out.println("------------------------------------");
+    // print out list of cities
     List<String> cities = backend.returnAllLocation();
     for (int i = 0; i < cities.size(); i++) {
       System.out.println(cities.get(i));
@@ -158,6 +161,7 @@ public class Frontend {
     } catch (InputMismatchException e) {
       System.out.println("Invalid input, please enter 0 to return to the main menu");
     }
+    // return to main menu
     if (toReturn == 0) {
       gpsMainMenu(backend);
     }
@@ -171,6 +175,7 @@ public class Frontend {
     System.out.println("Find the Neighbors of Your City");
     System.out.println("------------------------------------");
     System.out.println("Cities to Choose from: ");
+    // print out list of cities
     List<String> cities = backend.returnAllLocation();
     for (int i = 0; i < cities.size(); i++) {
       System.out.println(cities.get(i));
@@ -185,12 +190,15 @@ public class Frontend {
     }
     System.out.println("------------------------------------");
     LocationInterface city = backend.retrieveLocation(cityToGetNeighborsOf);
+    // geting neighbors and their distances
     List<String> neighbors = city.getNeighbors();
     List<Integer> distances = city.getDistances();
-    System.out.println("The list of neighboring cities and their distances for " + cityToGetNeighborsOf + ":");
+    System.out.println(
+        "The list of neighboring cities and their distances for " + cityToGetNeighborsOf + ":");
     System.out.println("------------------------------------");
     for (int i = 0; i < neighbors.size(); i++) {
-      System.out.println(neighbors.get(i) + " is " + distances.get(i) + " miles from " + cityToGetNeighborsOf);
+      System.out.println(
+          neighbors.get(i) + " is " + distances.get(i) + " miles from " + cityToGetNeighborsOf);
     }
     System.out.println("If you wish to return to the main menu, please enter 0");
     try {
@@ -198,6 +206,7 @@ public class Frontend {
     } catch (InputMismatchException e) {
       System.out.println("Invalid input, please enter 0 to return to the main menu");
     }
+    // returning to main menu
     if (toReturn == 0) {
       gpsMainMenu(backend);
     }
