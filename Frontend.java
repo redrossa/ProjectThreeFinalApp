@@ -37,7 +37,6 @@ public class Frontend {
       System.in.read();
     } catch (Exception e) {
       System.out.println("Please press enter to continue: ");
-      System.out.println("------------------------------------");
       main(args);
     }
     gpsMainMenu(backend);
@@ -69,11 +68,11 @@ public class Frontend {
     }
     // shortest distance
     if (mode == 1) {
-      // TODO: finish
+      getShortestPathBetweenTwoCities(back);
     }
     // list of cities
     else if (mode == 2) {
-      // TODO: finish
+      listAllCitiesAgain(back);
     }
     // city and neighbors
     else if (mode == 3) {
@@ -103,14 +102,18 @@ public class Frontend {
       }
       System.out.println("------------------------------------");
       System.out.println("Please enter the name of the city you want to start at.");
+      System.out.println("If you wish to return to the main menu, please enter 0");
       try {
         startCity = input.nextLine();
       } catch (Exception e) {
         System.out.println("Please enter a valid city. Try again.");
         getShortestPathBetweenTwoCities(backend);
       }
+      // exit mode
+      if (startCity.toLowerCase().equals("0")) {
+        gpsMainMenu(backend);
+      }
       System.out.println("Please enter the city you want to end at.");
-      System.out.println("If you wish to return to the main menu, please enter 0");
       try {
         endCity = input.nextLine();
       } catch (Exception e) {
@@ -123,7 +126,34 @@ public class Frontend {
       for (int i = 0; i < shortestPathToCities.size(); i++) {
         System.out.println(shortestPathToCities.get(i));
       }
+      System.out.println("------------------------------------");
     }
+
+  }
+
+  /**
+   * Prints out the list of the cities again for the user if needed
+   * 
+   * @param backend
+   */
+  public static void listAllCitiesAgain(Backend backend) {
+    Scanner userInput = new Scanner(System.in);
+    int toReturn = 1;
+    System.out.println("Cities to Choose from: ");
+    List<String> cities = backend.returnAllLocation();
+    for (int i = 0; i < cities.size(); i++) {
+      System.out.println(cities.get(i));
+    }
+    System.out.println("Enter 0 to return to the main menu.");
+    try {
+      toReturn = userInput.nextInt();
+    } catch (InputMismatchException e) {
+      System.out.println("Invalid input, please enter 0 to return to the main menu");
+    }
+    if (toReturn == 0) {
+      gpsMainMenu(backend);
+    }
+    System.out.println("------------------------------------");
   }
 
 }
