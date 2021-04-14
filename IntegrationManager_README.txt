@@ -1,32 +1,52 @@
 IntegrationManager README for Project Three(CS400 @ UW Madison)
 ==============================================================
 
-Name of IntegrationManager: <enter your complete name here>
-@wisc.edu Email of IntegrationManager: <enter your @wisc.edu email address here>
-Group: <enter your two letter group name here>
-Team: <enter your team color: red, blue, or purple, here>
+Name of IntegrationManager: Reno Raksi
+@wisc.edu Email of IntegrationManager: raksi@wisc.edu
+Group: JF
+Team: blue
 
 Complete List of Files:
 -----------------------
-<List all files that are a part of this project along with the name of the team
- member(s) who were most responsible for implementing the computation within
- each of these files.>
+Makefile
+CS400Graph.java
+GraphTest.java
 
 Instructions to Build, Run and Test your Project:
 -------------------------------------------------
 <Describe here any instructions that will be needed by course staff to build,
  run, and test this project.>
+`make run` or `make` builds the project and runs it
+`make compile` builds the project
+`make test` builds all the project tests and runs them all
+`make testFrontend` builds and runs only frontend tests
+`make testBackend` builds and runs only backend tests
+`make testData` builds and runs only data wrangler tests
+
+Upon running the project, press enter to go to the Main Menu.
+There are 3 options plus exit, enter the number:
+  1. Get a sequence of cities of the shortest path between two cities
+  2. Get a list of all available cities in this GPS
+  3. Get a list of all neighboring cities in this GPS of a city
+  0. Exit the program
+
+In option 1, user will be prompted twice: 1. the starting city, 2. the destination city.
+Once both are entered, a sequence of cities of the shortest path between the entered
+cities are printed in order with the subsequent city at the next line. User can press 0
+to exit to go back to the Main Menu.
+
+In option 3, user will be prompted for a city in the GPS. A list of cities neighboring
+the entered city and the distances between the entered city and the neighboring cities
+in the internal graph of the program are entered.
 
 Team Member Contributions:
 --------------------------
-<List the efforts of any members on your team that went above the team's
- expectations for their contributions to this project.  Also identify any
- ways that team members failed to meet the expectations of the group, for
- example: missed deadlines, lack of communication, lack of effort, etc.>
+No one failed to meet expectations.
+Lilly was quick to remind everyone to start working on their milestones and set up meetings.
+Yuven set up the project repository so everyone else can start working.
+Mayank helped going over each other's work to look for bugs.
 
 Signature:
 ----------
-<Type out your full name here to certify that to the best of your
- understanding, the contents of this submission represent the efforts of your
- team members. If you are aware of any exceptions to this, please describe them here below your name.>
+Reno Raksi
  
